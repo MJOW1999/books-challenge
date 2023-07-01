@@ -36,9 +36,14 @@ const Pagination = ({
       >
         Previous
       </MemoLimitButton>
-      <p>
-        Page {currentPage} of {pageTotal}
-      </p>
+      {pageTotal > 0 ? (
+        <p>
+          Page {currentPage} of {pageTotal}
+        </p>
+      ) : (
+        <p>{pageTotal}</p>
+      )}
+
       <MemoLimitButton
         name="next page"
         onClick={goForward}

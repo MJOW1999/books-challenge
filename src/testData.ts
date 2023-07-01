@@ -57,3 +57,6 @@ export const sampleShelf: Book[] = [
     book_pages: 277,
   },
 ];
+
+export const testSearchTerm: string = "Ο Αλέξανδρος ο Μακεδών";
+export const testAuthor: string = "Irving, Christopher";

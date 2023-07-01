@@ -7,3 +7,8 @@ export type Book = {
   book_publication_year?: string;
   book_pages: number;
 };
+
+export type Filters = {
+  type?: string;
+  values?: string[];
+};
