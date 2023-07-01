@@ -24,6 +24,7 @@ const Pagination = ({
     <PaginationContainer>
       <MemoLimitButton
         name="first-page"
+        data-testid="first-btn"
         onClick={() => setCurrentPage(1)}
         disabled={currentPage === 1}
       >
@@ -31,6 +32,7 @@ const Pagination = ({
       </MemoLimitButton>
       <MemoLimitButton
         name="previous page"
+        data-testid="prev-btn"
         onClick={goBack}
         disabled={currentPage === 1}
       >
@@ -46,6 +48,7 @@ const Pagination = ({
 
       <MemoLimitButton
         name="next page"
+        data-testid="next-btn"
         onClick={goForward}
         disabled={currentPage === pageTotal}
       >
@@ -53,6 +56,7 @@ const Pagination = ({
       </MemoLimitButton>
       <MemoLimitButton
         name="last page"
+        data-testid="last-btn"
         onClick={() => setCurrentPage(pageTotal)}
         disabled={currentPage === pageTotal}
       >
