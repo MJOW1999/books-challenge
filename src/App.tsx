@@ -9,13 +9,12 @@ import { Book } from "./types";
 function App() {
   const [books, setBooks] = useState<Book[]>([]);
   const [count, setCount] = useState<number>(0);
-  //const [filters, setFilters] = useState();
 
-  // Pagination stuff
+  // Pagination
   const [pageTotal, setPageTotal] = useState<number>(5);
   const [currentPage, setCurrentPage] = useState<number>(1);
 
-  async function getBooks() {
+  async function getBooks(page: number) {
     const url = "http://nyx.vima.ekt.gr:3000/api/books";
     try {
       const response = await fetch(url, {
@@ -24,14 +23,15 @@ function App() {
           Accept: "application/json, text/plain, */*",
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ page: 1, itemsPerPage: 20, filters: [] }),
+        body: JSON.stringify({ page: page, itemsPerPage: 20, filters: [] }),
       });
       const data = await response.json();
       setBooks(data.books);
       setCount(data.count);
       const pageTotalCalc = Math.ceil(data.count / 20);
       setPageTotal(pageTotalCalc);
-      console.log("called");
+      console.log(data);
+      console.log(currentPage);
       return data;
     } catch (err) {
       console.log(err);
@@ -39,7 +39,7 @@ function App() {
   }
 
   useEffect(() => {
-    getBooks();
+    getBooks(currentPage);
   }, [currentPage]);
 
   return (

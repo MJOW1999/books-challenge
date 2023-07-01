@@ -12,7 +12,6 @@ const Pagination = ({
   currentPage,
   setCurrentPage,
 }: PaginationProps) => {
-  console.log(currentPage);
   const goBack = useCallback(() => {
     setCurrentPage(currentPage - 1);
   }, [currentPage, setCurrentPage]);

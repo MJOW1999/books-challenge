@@ -19,7 +19,7 @@ const SingleBook = ({ book }: { book: Book }) => {
 const BookWrapper = styled.section`
   width: 280px;
   height: 420px;
-  background: #f33139;
+  background: #ff4d4d;
   border-radius: 20px 16px 12px;
   display: flex;
   flex-direction: column;
