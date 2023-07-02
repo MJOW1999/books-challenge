@@ -29,6 +29,15 @@ const BooksContainer = styled.section`
   justify-content: center;
   align-items: center;
   gap: 10px;
+
+  @media (min-width: 768px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+  }
 `;
 
 export default BookShelf;

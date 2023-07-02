@@ -4,6 +4,7 @@ import SearchBar from "./components/SearchBar";
 import Pagination from "./components/Pagination";
 import BookShelf from "./components/BookShelf";
 import { Book, Filters } from "./types";
+import styled from "styled-components";
 
 function App() {
   const [books, setBooks] = useState<Book[]>([]);
@@ -43,8 +44,6 @@ function App() {
       setCount(data.count);
       const pageTotalCalc = Math.ceil(data.count / itemsPerPage);
       setPageTotal(pageTotalCalc);
-      console.log(data);
-      console.log(currentPage);
       return data;
     } catch (err) {
       console.log(err);
@@ -58,36 +57,67 @@ function App() {
 
   return (
     <div className="App">
-      <div>
-        <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-        <button
-          onClick={() => {
-            setFilters([{ type: "all", values: [searchTerm] }]);
-            getBooks(currentPage, itemsPerPage, filters);
-          }}
-        >
-          Search
-        </button>
-      </div>
-      {itemsPerPage <= count && (
-        <p>
-          Showing {itemsPerPage} of {count} books
-        </p>
-      )}
-      {count > 0 && itemsPerPage > count && (
-        <p>
-          Showing {count} of {count} books
-        </p>
-      )}
-      {!count && <p>No books available. Try a different search term</p>}
-      <BookShelf bookList={books} />
-      <Pagination
-        pageTotal={pageTotal}
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-      />
+      <Content>
+        <section>
+          <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+          <SearchButton
+            onClick={() => {
+              setFilters([{ type: "all", values: [searchTerm] }]);
+              setCurrentPage(1);
+              getBooks(currentPage, itemsPerPage, filters);
+            }}
+          >
+            Search
+          </SearchButton>
+        </section>
+        {itemsPerPage <= count && (
+          <BooksDisplayed>
+            Showing {itemsPerPage} of {count} books
+          </BooksDisplayed>
+        )}
+        {count > 0 && itemsPerPage > count && (
+          <BooksDisplayed>
+            Showing {count} of {count} books
+          </BooksDisplayed>
+        )}
+        {!count && (
+          <NoBooks>No books available. Try a different search term</NoBooks>
+        )}
+        <BookShelf bookList={books} />
+        <Pagination
+          pageTotal={pageTotal}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
+      </Content>
     </div>
   );
 }
+
+const Content = styled.main`
+  max-width: 860px;
+  margin-top: 4rem;
+  width: 100%;
+
+  @media (min-width: 1024px) {
+    margin: 4rem auto 0 auto;
+  }
+`;
+
+const SearchButton = styled.button`
+  font-size: 18px;
+`;
+
+const BooksDisplayed = styled.p`
+  font-style: italic;
+  font-size: 18px;
+  @media (min-width: 768px) {
+    font-size: 20px;
+  }
+`;
+
+const NoBooks = styled.p`
+  margin-top: 4rem;
+`;
 
 export default App;

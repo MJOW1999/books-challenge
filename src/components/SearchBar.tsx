@@ -1,3 +1,5 @@
+import { styled } from "styled-components";
+
 interface SearchBarProps {
   searchTerm: string;
   setSearchTerm: (searchTerm: string) => void;
@@ -6,15 +8,21 @@ interface SearchBarProps {
 const SearchBar = ({ searchTerm, setSearchTerm }: SearchBarProps) => {
   return (
     <>
-      <input
+      <Input
         type="text"
         id="searchInput"
         placeholder="Enter your search term"
         value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
+        onChange={(e: { target: { value: string } }) =>
+          setSearchTerm(e.target.value)
+        }
       />
     </>
   );
 };
+
+const Input = styled.input`
+  font-size: 18px;
+`;
 
 export default SearchBar;

@@ -20,6 +20,8 @@ const Pagination = ({
     setCurrentPage(currentPage + 1);
   }, [currentPage, setCurrentPage]);
 
+  console.log({ currentPage, pageTotal });
+
   return (
     <PaginationContainer>
       <MemoLimitButton
@@ -39,9 +41,9 @@ const Pagination = ({
         Previous
       </MemoLimitButton>
       {pageTotal > 0 ? (
-        <p>
+        <PageNumber>
           Page {currentPage} of {pageTotal}
-        </p>
+        </PageNumber>
       ) : (
         <p>{pageTotal}</p>
       )}
@@ -50,7 +52,7 @@ const Pagination = ({
         name="next page"
         data-testid="next-btn"
         onClick={goForward}
-        disabled={currentPage === pageTotal}
+        disabled={currentPage === pageTotal || pageTotal === 0}
       >
         Next
       </MemoLimitButton>
@@ -58,7 +60,7 @@ const Pagination = ({
         name="last page"
         data-testid="last-btn"
         onClick={() => setCurrentPage(pageTotal)}
-        disabled={currentPage === pageTotal}
+        disabled={currentPage === pageTotal || pageTotal === 0}
       >
         Last
       </MemoLimitButton>
@@ -70,6 +72,10 @@ const PaginationContainer = styled.section`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+
+  @media (min-width: 768px) {
+    font-size: 18px;
+  }
 `;
 
 const LimitButton = styled.button<{ disabled: boolean }>`
@@ -80,19 +86,22 @@ const LimitButton = styled.button<{ disabled: boolean }>`
   height: 30px;
   border-radius: 1px;
   margin: 0rem 1rem;
-  background: ${(props) => (props.disabled ? "#dddddd" : "#34ace0")};
-  color: white;
+  background: ${(props) => (props.disabled ? "#dddddd" : "#ffb8b8")};
   margin-left: 4px;
   margin-right: 4px;
   font-weight: 100;
   cursor: ${(props) => (props.disabled ? "not-allowed" : "auto")};
 
-  :hover {
-    background: #227093;
-    cursor: pointer;
+  &:hover {
+    background: ${(props) => !props.disabled && "#ffcccc"};
+    cursor: ${(props) => !props.disabled && "pointer"};
   }
 `;
 
 const MemoLimitButton = React.memo(LimitButton);
+
+const PageNumber = styled.p`
+  font-weight: 500;
+`;
 
 export default Pagination;
