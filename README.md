@@ -1,46 +1,51 @@
-# Getting Started with Create React App
+# Books Browser App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Build a simple app to fetch and search books. The app should have:
 
-## Available Scripts
+- a search input where users can type a book detail
+- a book list with the author and title displayed
+- a pagination component to switch between different results pages
 
-In the project directory, you can run:
+### [Click here to see the Video Review]([LINK_TO_LOOM_VIDEO])
 
-### `npm start`
+## Proposed Solution
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- A simple UI with fake data was built first (testData.ts) - this aided in mapping out components
+- The pagination logic was added and tested
+- The API was integrated and the results are stored in component state
+- The search logic was added
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### [Click here to see the Live Version]()
 
-### `npm test`
+## Assumptions
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- No need for a global state management solution
 
-### `npm run build`
+## Libraries / Tools Used
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- `React.js`
+- Create React App with `Typescript` for project setup
+- `Styled-Components`
+- `Jest` for testing
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Setup
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+To install the dependencies run:
 
-### `npm run eject`
+`npm install`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+And to run the app:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+`npm start`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Running the tests
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+You can run the unit tests using:
 
-## Learn More
+`npm test`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Future Work
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Complete test coverage to achieve 90%
+2. Improve styling and responsive design
+3. Would be great to add `end-2-end` tests with `Cypress`
