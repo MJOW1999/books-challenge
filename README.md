@@ -6,7 +6,7 @@ Build a simple app to fetch and search books. The app should have:
 - a book list with the author and title displayed
 - a pagination component to switch between different results pages
 
-### [Click here to see the Video Review]([LINK_TO_LOOM_VIDEO])
+### [Click here to see the Video Review](https://www.loom.com/share/da5be1841bab46fda46f814e733bd418)
 
 ## Proposed Solution
 
@@ -15,7 +15,7 @@ Build a simple app to fetch and search books. The app should have:
 - The API was integrated and the results are stored in component state
 - The search logic was added
 
-### [Click here to see the Live Version]()
+### [Click here to see the Live Version](https://classy-nougat-f6044b.netlify.app/)
 
 ## Assumptions
 
